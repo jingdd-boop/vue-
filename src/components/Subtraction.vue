@@ -1,17 +1,35 @@
 <template>
   <div>
-    <h3>当前最新的count值为{{}}</h3>
-    <button>-1</button>
+    <h3>当前最新的count值为{{count}}</h3>
+    <button @click="handle1">-1</button>
+     <button @click="handle2">-N</button>
+    
+
   </div>
 </template>
 
 <script>
+import {mapState} from 'vuex'
+import {mapMutations} from 'vuex'
   export default {
     data() {
       return {
-        key: value
+       
       }
     },
+     computed:{
+      ...mapState(['count']),
+     
+    },
+    methods:{
+      ...mapMutations(['sub','subN']),
+      handle1(){
+         this.sub()
+      },
+      handle2(){
+        this.subN(2)
+      }
+    }
   }
 </script>
 
